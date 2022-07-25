@@ -22,3 +22,19 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "192.168.1.42:53:53/tcp"
+      - "192.168.1.42:53:53/udp"
+      - "881:80/tcp"
+    environment:
+      TZ: 'Europe/Zagreb'
+    volumes:
+      - './pihole/etc-pihole:/etc/pihole'
+      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
