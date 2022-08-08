@@ -1,0 +1,55 @@
+---
+version: "2"
+services:
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    mem_limit: 512M
+    mem_reservation: 16M
+    cpus: 0.1
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zagreb
+    volumes:
+      - /home/seki/docker/mediadownload/Jackett:/config
+      - /home/seki/docker/mediadownload/Jackett/Downloads:/downloads
+    ports:
+      - 7002:9117
+    restart: unless-stopped
+    
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    mem_limit: 512M
+    mem_reservation: 16M
+    cpus: 0.1
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zagreb
+    volumes:
+      - /home/seki/docker/mediadownload/Radarr:/config
+      - /media/share/Video/Filmovi:/movies
+      - /media/share/Downloads:/downloads
+    ports:
+      - 7003:7878
+    restart: unless-stopped
+    
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    mem_limit: 512M
+    mem_reservation: 16M
+    cpus: 0.1
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zagreb
+    volumes:
+      - /home/seki/docker/mediadownload/Sonarr:/config
+      - /media/share/Video/Serije:/tv
+      - /media/share/Downloads:/downloads
+    ports:
+      - 7006:8989
+    restart: unless-stopped

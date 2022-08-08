@@ -1,0 +1,17 @@
+version: "2"
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=998
+      - PGID=100
+      - TZ=America/Denver
+      - UMASK_SET=022 #optional
+    volumes:
+      - /srv/dev-disk-by-uuid-0d4a201c-b292-412d-ade6-cc5561e54f1f/Configs/Radarr:/config
+      - /srv/dev-disk-by-uuid-0d4a201c-b292-412d-ade6-cc5561e54f1f/Movies:/movies
+      - /srv/dev-disk-by-uuid-0d4a201c-b292-412d-ade6-cc5561e54f1f/Torrents:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
