@@ -1,0 +1,30 @@
+version: '2.1'
+
+services:
+
+  matomo:
+    image: matomo
+    restart: always
+    ports:
+      - 3000:80
+    environment:
+      - MATOMO_DATABASE_HOST=db   
+      - MATOMO_DATABASE_TABLES_PREFIX=mat_
+      - MATOMO_DATABASE_USERNAME=URAaM4gr9ahgquXYBtTe
+      - MATOMO_DATABASE_PASSWORD=apzzHvJTnADtJdg5kAV8
+      - MATOMO_DATABASE_DBNAME=mymatomodb
+    volumes:
+      - /home/seki/docker/Matomo:/var/www/html
+    links:
+      - db:db
+
+  db:
+    image: yobasystems/alpine-mariadb:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: mymatomodb
+      MYSQL_USER: URAaM4gr9ahgquXYBtTe
+      MYSQL_PASSWORD: apzzHvJTnADtJdg5kAV8
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - /home/seki/docker/Matomodb:/var/lib/mysql
