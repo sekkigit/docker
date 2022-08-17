@@ -12,10 +12,10 @@ services:
       - PGID=1000
       - TZ=Europe/Zagreb
     volumes:
-      - /home/seki/docker/mediadownload/Jackett:/config
-      - /home/seki/docker/mediadownload/Jackett/Downloads:/downloads
+      - /Jackett:/config
+      - /Jackett/Downloads:/downloads
     ports:
-      - 7002:9117
+      - 1000:9117
     restart: unless-stopped
     
   radarr:
@@ -29,11 +29,11 @@ services:
       - PGID=1000
       - TZ=Europe/Zagreb
     volumes:
-      - /home/seki/docker/mediadownload/Radarr:/config
-      - /media/share/Video/Filmovi:/movies
-      - /media/share/Downloads:/downloads
+      - /Radarr:/config
+      - /Video/Filmovi:/movies
+      - /Downloads:/downloads
     ports:
-      - 7003:7878
+      - 2000:7878
     restart: unless-stopped
     
   sonarr:
@@ -47,9 +47,9 @@ services:
       - PGID=1000
       - TZ=Europe/Zagreb
     volumes:
-      - /home/seki/docker/mediadownload/Sonarr:/config
-      - /media/share/Video/Serije:/tv
-      - /media/share/Downloads:/downloads
+      - /Sonarr:/config
+      - /Video/Serije:/tvs
+      - /Downloads:/downloads
     ports:
-      - 7006:8989
+      - 3000:8989
     restart: unless-stopped
