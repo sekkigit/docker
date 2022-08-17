@@ -8,8 +8,8 @@ services:
       - PGID=1000
       - TZ=America/Denver
     volumes:
-      - ./jackett/Configs/Jackett:/config
-      - /srv/dev-disk-by-uuid-0d4a201c-b292-412d-ade6-cc5561e54f1f/Torrents:/downloads
+      - ./Jackett:/config
+      - /Torrents:/downloads
     ports:
       - 9117:9117
     restart: unless-stopped
