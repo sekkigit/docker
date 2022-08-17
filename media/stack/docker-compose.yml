@@ -6,7 +6,7 @@ services:
     container_name: jackett
     mem_limit: 512M
     mem_reservation: 16M
-    cpus: 0.1
+    cpus: 0.25
     environment:
       - PUID=1000
       - PGID=1000
@@ -23,7 +23,7 @@ services:
     container_name: radarr
     mem_limit: 512M
     mem_reservation: 16M
-    cpus: 0.1
+    cpus: 0.25
     environment:
       - PUID=1000
       - PGID=1000
@@ -41,7 +41,7 @@ services:
     container_name: sonarr
     mem_limit: 512M
     mem_reservation: 16M
-    cpus: 0.1
+    cpus: 0.25
     environment:
       - PUID=1000
       - PGID=1000
